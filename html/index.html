@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>AX Animaciones</title>
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@300;400;600&family=Fugaz+One&display=swap" rel="stylesheet"/>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+
+    <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+<!-- =============================================
+     MENÚ PRINCIPAL
+============================================= -->
+<div id="anims-container" class="hidden">
+
+    <!-- Panel principal -->
+    <div id="anims-panel">
+
+        <!-- HEADER -->
+        <div class="panel-header">
+            <div class="header-left">
+                <i class="fa-solid fa-person-running header-icon"></i>
+                <span class="header-title">ANIMACIONES</span>
+            </div>
+            <button class="btn-close" id="btn-close-menu">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+
+        <!-- BUSCADOR -->
+        <div class="search-wrapper">
+            <i class="fa-solid fa-magnifying-glass search-icon"></i>
+            <input type="text" id="search-input" placeholder="Buscar animación..." autocomplete="off"/>
+        </div>
+
+        <!-- BODY: TABS + CONTENIDO -->
+        <div class="panel-body">
+
+            <!-- TABS LATERALES -->
+            <nav class="tabs-nav">
+                <button class="tab-btn active" data-tab="todas"      title="Todas">
+                    <i class="fa-solid fa-border-all"></i>
+                </button>
+                <button class="tab-btn" data-tab="favoritos"         title="Favoritos">
+                    <i class="fa-solid fa-star"></i>
+                </button>
+                <button class="tab-btn" data-tab="expresiones"       title="Expresiones">
+                    <i class="fa-solid fa-face-smile"></i>
+                </button>
+                <button class="tab-btn" data-tab="bailes"            title="Bailes">
+                    <i class="fa-solid fa-music"></i>
+                </button>
+                <button class="tab-btn" data-tab="caminar"           title="Formas de Caminar">
+                    <i class="fa-solid fa-shoe-prints"></i>
+                </button>
+                <button class="tab-btn" data-tab="compartidas"       title="Compartidas">
+                    <i class="fa-solid fa-people-arrows"></i>
+                </button>
+                <button class="tab-btn" data-tab="trabajo"           title="Trabajo">
+                    <i class="fa-solid fa-briefcase"></i>
+                </button>
+                <button class="tab-btn" data-tab="props"             title="Props">
+                    <i class="fa-solid fa-box-open"></i>
+                </button>
+                <button class="tab-btn" data-tab="sentarse"          title="Sentarse">
+                    <i class="fa-solid fa-chair"></i>
+                </button>
+            </nav>
+
+            <!-- CONTENIDO TABS -->
+            <div class="tabs-content">
+
+                <!-- TODAS -->
+                <div class="tab-panel active" id="tab-todas">
+                    <div class="tab-header">
+                        <i class="fa-solid fa-border-all tab-header-icon"></i>
+                        <span class="tab-header-title">TODAS</span>
+                    </div>
+                    <div class="anims-grid" id="grid-todas"></div>
+                </div>
+
+                <!-- FAVORITOS -->
+                <div class="tab-panel" id="tab-favoritos">
+                    <div class="tab-header">
+                        <i class="fa-solid fa-star tab-header-icon"></i>
+                        <span class="tab-header-title">FAVORITOS</span>
+                    </div>
+                    <div class="anims-grid" id="grid-favoritos"></div>
+                    <div class="empty-msg" id="empty-favoritos">
+                        <i class="fa-regular fa-star"></i>
+                        <p>Aún no tienes favoritos</p>
+                    </div>
+                </div>
+
+                <!-- EXPRESIONES -->
+                <div class="tab-panel" id="tab-expresiones">
+                    <div class="tab-header">
+                        <i class="fa-solid fa-face-smile tab-header-icon"></i>
+                        <span class="tab-header-title">EXPRESIONES</span>
+                    </div>
+                    <div class="anims-grid" id="grid-expresiones"></div>
+                </div>
+
+                <!-- BAILES -->
+                <div class="tab-panel" id="tab-bailes">
+                    <div class="tab-header">
+                        <i class="fa-solid fa-music tab-header-icon"></i>
+                        <span class="tab-header-title">BAILES</span>
+                    </div>
+                    <div class="anims-grid" id="grid-bailes"></div>
+                </div>
+
+                <!-- CAMINAR -->
+                <div class="tab-panel" id="tab-caminar">
+                    <div class="tab-header">
+                        <i class="fa-solid fa-shoe-prints tab-header-icon"></i>
+                        <span class="tab-header-title">FORMAS DE CAMINAR</span>
+                    </div>
+                    <div class="anims-grid" id="grid-caminar"></div>
+                </div>
+
+                <!-- COMPARTIDAS -->
+                <div class="tab-panel" id="tab-compartidas">
+                    <div class="tab-header">
+                        <i class="fa-solid fa-people-arrows tab-header-icon"></i>
+                        <span class="tab-header-title">COMPARTIDAS</span>
+                    </div>
+                    <div class="anims-grid" id="grid-compartidas"></div>
+                </div>
+
+                <!-- TRABAJO -->
+                <div class="tab-panel" id="tab-trabajo">
+                    <div class="tab-header">
+                        <i class="fa-solid fa-briefcase tab-header-icon"></i>
+                        <span class="tab-header-title">TRABAJO</span>
+                    </div>
+                    <div class="anims-grid" id="grid-trabajo"></div>
+                </div>
+
+                <!-- PROPS -->
+                <div class="tab-panel" id="tab-props">
+                    <div class="tab-header">
+                        <i class="fa-solid fa-box-open tab-header-icon"></i>
+                        <span class="tab-header-title">PROPS</span>
+                    </div>
+                    <div class="anims-grid" id="grid-props"></div>
+                </div>
+
+                <!-- SENTARSE -->
+                <div class="tab-panel" id="tab-sentarse">
+                    <div class="tab-header">
+                        <i class="fa-solid fa-chair tab-header-icon"></i>
+                        <span class="tab-header-title">SENTARSE</span>
+                    </div>
+                    <div class="anims-grid" id="grid-sentarse"></div>
+                </div>
+
+            </div><!-- /tabs-content -->
+        </div><!-- /panel-body -->
+
+    </div><!-- /anims-panel -->
+
+    <!-- Overlay para cerrar al hacer click fuera -->
+    <div id="overlay-close"></div>
+
+</div><!-- /anims-container -->
+
+
+<!-- =============================================
+     MODAL: SOLICITUD ANIMACIÓN COMPARTIDA
+============================================= -->
+<div id="shared-modal" class="hidden">
+    <div class="shared-modal-box">
+        <div class="shared-modal-icon">
+            <i class="fa-solid fa-people-arrows"></i>
+        </div>
+        <p class="shared-modal-title">ANIMACIÓN COMPARTIDA</p>
+        <p class="shared-modal-desc">Un jugador quiere hacer <strong id="shared-anim-name"></strong> contigo</p>
+        <div class="shared-modal-timer-bar">
+            <div class="shared-modal-timer-fill" id="shared-timer-fill"></div>
+        </div>
+        <div class="shared-modal-actions">
+            <button class="btn-accept" id="btn-accept-shared">
+                <i class="fa-solid fa-check"></i> Aceptar
+            </button>
+            <button class="btn-decline" id="btn-decline-shared">
+                <i class="fa-solid fa-xmark"></i> Rechazar
+            </button>
+        </div>
+    </div>
+</div>
+
+
+<script src="script.js"></script>
+</body>
+</html>

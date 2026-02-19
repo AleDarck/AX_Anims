@@ -1,0 +1,595 @@
+/* ============================================================
+   AX_Anims - Estilos
+   Paleta: negro, gris oscuro, blanco
+   TipografÃ­a: Fugaz One (tÃ­tulos), Poppins (cuerpo)
+============================================================ */
+
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    width: 100vw;
+    height: 100vh;
+    background: transparent;
+    font-family: 'Poppins', sans-serif;
+    overflow: hidden;
+    user-select: none;
+}
+
+/* ============================================================
+   VARIABLES
+============================================================ */
+:root {
+    --bg-primary:   #111111;
+    --bg-secondary: #1a1a1a;
+    --bg-card:      #202020;
+    --bg-card-hover:#2a2a2a;
+    --bg-input:     #171717;
+    --border:       #2e2e2e;
+    --border-light: #3a3a3a;
+    --accent:       #e0e0e0;
+    --accent-dim:   #888888;
+    --accent-fav:   #e0b84e;
+    --text-primary: #f0f0f0;
+    --text-secondary:#aaaaaa;
+    --tab-active-bg:#222222;
+    --close-hover:  #333333;
+    --panel-width:  340px;
+    --panel-height: 82vh;
+    --radius:       8px;
+    --radius-sm:    5px;
+}
+
+/* ============================================================
+   CONTENEDOR PRINCIPAL
+============================================================ */
+#anims-container {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 2vw;
+    pointer-events: none;
+    z-index: 9999;
+}
+
+#anims-container.hidden {
+    display: none;
+}
+
+#overlay-close {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: all;
+    cursor: default;
+}
+
+/* ============================================================
+   PANEL PRINCIPAL
+============================================================ */
+#anims-panel {
+    width: 50vh;
+    height: 77vh;
+    background: var(--bg-primary);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    pointer-events: all;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.7);
+
+    /* AnimaciÃ³n de apertura */
+    animation: slideIn 0.22s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(30px) scale(0.97);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0) scale(1);
+    }
+}
+
+@keyframes slideOut {
+    from {
+        opacity: 1;
+        transform: translateX(0) scale(1);
+    }
+    to {
+        opacity: 0;
+        transform: translateX(30px) scale(0.97);
+    }
+}
+
+#anims-panel.closing {
+    animation: slideOut 0.18s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+
+/* ============================================================
+   HEADER
+============================================================ */
+.panel-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 16px;
+    border-bottom: 1px solid var(--border);
+    background: var(--bg-secondary);
+    flex-shrink: 0;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.header-icon {
+    font-size: 18px;
+    color: var(--accent);
+}
+
+.header-title {
+    font-family: 'Fugaz One', sans-serif;
+    font-size: 18px;
+    letter-spacing: 0.05em;
+    color: var(--text-primary);
+    text-transform: uppercase;
+}
+
+.btn-close {
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--text-secondary);
+    width: 28px;
+    height: 28px;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    transition: background 0.15s, color 0.15s, border-color 0.15s;
+}
+
+.btn-close:hover {
+    background: var(--close-hover);
+    color: var(--text-primary);
+    border-color: var(--border-light);
+}
+
+/* ============================================================
+   BUSCADOR
+============================================================ */
+.search-wrapper {
+    position: relative;
+    padding: 10px 12px;
+    border-bottom: 1px solid var(--border);
+    flex-shrink: 0;
+    background: var(--bg-primary);
+}
+
+.search-icon {
+    position: absolute;
+    left: 22px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--accent-dim);
+    font-size: 13px;
+    pointer-events: none;
+}
+
+#search-input {
+    width: 100%;
+    background: var(--bg-input);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    color: var(--text-primary);
+    font-family: 'Poppins', sans-serif;
+    font-size: 12px;
+    font-weight: 300;
+    padding: 7px 10px 7px 32px;
+    outline: none;
+    transition: border-color 0.15s;
+}
+
+#search-input::placeholder {
+    color: var(--accent-dim);
+}
+
+#search-input:focus {
+    border-color: var(--border-light);
+}
+
+/* ============================================================
+   BODY: TABS NAV + CONTENIDO
+============================================================ */
+.panel-body {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    overflow: hidden;
+}
+
+/* --- TABS NAV --- */
+.tabs-nav {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 2px;
+    padding: 6px 10px;
+    background: var(--bg-secondary);
+    border-bottom: 1px solid var(--border);
+    flex-shrink: 0;
+    overflow-x: auto;
+}
+
+.tabs-nav::-webkit-scrollbar { display: none; }
+
+.tab-btn {
+    min-width: 45px;
+    height: 45px;
+    background: transparent;
+    border: 1px solid transparent;
+    border-radius: var(--radius-sm);
+    color: var(--accent-dim);
+    font-size: 14px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.15s, color 0.15s, border-color 0.15s;
+    position: relative;
+    flex-shrink: 0;
+}
+
+.tab-btn:hover {
+    background: var(--tab-active-bg);
+    color: var(--text-primary);
+    border-color: var(--border);
+}
+
+.tab-btn.active {
+    background: #484848;
+    color: var(--text-primary);
+    border-color: var(--border-light);
+}
+
+/* Tooltip de tab */
+.tab-btn::after {
+    content: attr(title);
+    position: absolute;
+    left: 50%;
+    top: calc(100% + 8px);
+    transform: translateX(-50%);
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    color: var(--text-primary);
+    font-family: 'Poppins', sans-serif;
+    font-size: 11px;
+    font-weight: 400;
+    white-space: nowrap;
+    padding: 4px 8px;
+    border-radius: var(--radius-sm);
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.15s;
+    z-index: 10;
+}
+
+.tab-btn:hover::after {
+    opacity: 1;
+}
+
+/* --- CONTENIDO TABS --- */
+.tabs-content {
+    flex: 1;
+    overflow: hidden;
+    position: relative;
+}
+
+.tab-panel {
+    display: none;
+    flex-direction: column;
+    height: 100%;
+    overflow: hidden;
+}
+
+.tab-panel.active {
+    display: flex;
+}
+
+/* Header de tab */
+.tab-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 12px 8px;
+    border-bottom: 1px solid var(--border);
+    flex-shrink: 0;
+}
+
+.tab-header-icon {
+    font-size: 20px;
+    color: var(--accent-dim);
+}
+
+.tab-header-title {
+    font-family: 'Fugaz One', sans-serif;
+    font-size: 16px;
+    letter-spacing: 0.06em;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+}
+
+/* ============================================================
+   GRID DE ANIMACIONES
+============================================================ */
+.anims-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    padding: 10px;
+    overflow-y: auto;
+    flex: 1;
+}
+
+/* Scrollbar */
+.anims-grid::-webkit-scrollbar {
+    width: 4px;
+}
+.anims-grid::-webkit-scrollbar-track {
+    background: transparent;
+}
+.anims-grid::-webkit-scrollbar-thumb {
+    background: var(--border-light);
+    border-radius: 4px;
+}
+.anims-grid::-webkit-scrollbar-thumb:hover {
+    background: var(--accent-dim);
+}
+
+/* ============================================================
+   TARJETA DE ANIMACIÃ“N
+============================================================ */
+.anim-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 9px 10px;
+    cursor: pointer;
+    display: flex;
+    gap: 6px;
+    transition: background 0.14s, border-color 0.14s;
+    min-height: 65px;
+    max-height: 65px;
+    justify-content: space-between;
+}
+
+.anim-card:hover {
+    background: var(--bg-card-hover);
+    border-color: var(--border-light);
+}
+
+.anim-card:active {
+    transform: scale(0.98);
+}
+
+.anim-card-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    flex: 1;
+    min-width: 0;
+}
+
+.anim-card-name {
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-primary);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 1.3;
+}
+
+.anim-card-cmd {
+    font-family: 'Poppins', sans-serif;
+    font-size: 10px;
+    font-weight: 300;
+    color: var(--accent-dim);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.anim-card-fav {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: var(--accent-dim);
+    font-size: 13px;
+    padding: 2px 0 0 4px;
+    flex-shrink: 0;
+    transition: color 0.15s, transform 0.15s;
+    align-self: center;
+    line-height: 1;
+}
+
+.anim-card-fav:hover {
+    color: var(--accent-fav);
+    transform: scale(1.15);
+}
+
+.anim-card-fav.active {
+    color: var(--accent-fav);
+}
+
+/* ============================================================
+   VACÃO - FAVORITOS
+============================================================ */
+.empty-msg {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 40px 20px;
+    color: var(--accent-dim);
+    font-family: 'Poppins', sans-serif;
+    font-size: 12px;
+    font-weight: 300;
+    text-align: center;
+}
+
+.empty-msg i {
+    font-size: 28px;
+    opacity: 0.5;
+}
+
+.empty-msg.visible {
+    display: flex;
+}
+
+/* ============================================================
+   MODAL ANIMACIÃ“N COMPARTIDA
+============================================================ */
+#shared-modal {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 99999;
+    pointer-events: all;
+}
+
+#shared-modal.hidden {
+    display: none;
+}
+
+.shared-modal-box {
+    background: var(--bg-primary);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius);
+    padding: 24px 28px;
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    box-shadow: 0 8px 40px rgba(0,0,0,0.8);
+    animation: fadeInModal 0.2s ease both;
+}
+
+@keyframes fadeInModal {
+    from { opacity: 0; transform: scale(0.93) translateY(10px); }
+    to   { opacity: 1; transform: scale(1)    translateY(0);    }
+}
+
+.shared-modal-icon {
+    width: 44px;
+    height: 44px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    color: var(--text-secondary);
+}
+
+.shared-modal-title {
+    font-family: 'Fugaz One', sans-serif;
+    font-size: 16px;
+    letter-spacing: 0.06em;
+    color: var(--text-primary);
+    text-transform: uppercase;
+}
+
+.shared-modal-desc {
+    font-family: 'Poppins', sans-serif;
+    font-size: 12px;
+    font-weight: 300;
+    color: var(--text-secondary);
+    text-align: center;
+    line-height: 1.5;
+}
+
+.shared-modal-desc strong {
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+/* Timer bar */
+.shared-modal-timer-bar {
+    width: 100%;
+    height: 3px;
+    background: var(--border);
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.shared-modal-timer-fill {
+    height: 100%;
+    width: 100%;
+    background: var(--accent-dim);
+    border-radius: 2px;
+    transition: width linear;
+}
+
+/* Botones */
+.shared-modal-actions {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+}
+
+.btn-accept,
+.btn-decline {
+    flex: 1;
+    padding: 8px 0;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    font-family: 'Poppins', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    transition: background 0.14s, border-color 0.14s;
+}
+
+.btn-accept {
+    background: var(--bg-card);
+    color: var(--text-primary);
+}
+
+.btn-accept:hover {
+    background: #2c2c2c;
+    border-color: var(--border-light);
+}
+
+.btn-decline {
+    background: transparent;
+    color: var(--text-secondary);
+}
+
+.btn-decline:hover {
+    background: var(--bg-card);
+    color: var(--text-primary);
+    border-color: var(--border-light);
+}
