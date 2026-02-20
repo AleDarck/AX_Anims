@@ -1,7 +1,7 @@
 /* ============================================================
    AX_Anims - Estilos
    Paleta: negro, gris oscuro, blanco
-   TipografÃ­a: Fugaz One (tÃ­tulos), Poppins (cuerpo)
+   TipografÃƒÂ­a: Fugaz One (tÃƒÂ­tulos), Poppins (cuerpo)
 ============================================================ */
 
 *, *::before, *::after {
@@ -84,7 +84,7 @@ html, body {
     pointer-events: all;
     box-shadow: 0 8px 32px rgba(0,0,0,0.7);
 
-    /* AnimaciÃ³n de apertura */
+    /* AnimaciÃƒÂ³n de apertura */
     animation: slideIn 0.22s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
 }
 
@@ -133,14 +133,22 @@ html, body {
     gap: 10px;
 }
 
-.header-icon {
-    font-size: 18px;
-    color: var(--accent);
+.header-icon-box {
+    width: 40px;
+    height: 40px;
+    background: #cc0000;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 25px;
+    color: #ffffff;
+    flex-shrink: 0;
 }
 
 .header-title {
     font-family: 'Fugaz One', sans-serif;
-    font-size: 18px;
+    font-size: 26px;
     letter-spacing: 0.05em;
     color: var(--text-primary);
     text-transform: uppercase;
@@ -225,7 +233,7 @@ html, body {
     display: flex;
     flex-direction: row;
     align-items: center;
-    gap: 2px;
+    gap: 6px;
     padding: 6px 10px;
     background: var(--bg-secondary);
     border-bottom: 1px solid var(--border);
@@ -238,11 +246,11 @@ html, body {
 .tab-btn {
     min-width: 45px;
     height: 45px;
-    background: transparent;
+    background: #262626;
     border: 1px solid transparent;
-    border-radius: var(--radius-sm);
-    color: var(--accent-dim);
-    font-size: 14px;
+    border-radius: 10px;
+    color: #b1b1b1;
+    font-size: 17px;
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -253,41 +261,47 @@ html, body {
 }
 
 .tab-btn:hover {
-    background: var(--tab-active-bg);
+    background: #424242;
     color: var(--text-primary);
     border-color: var(--border);
 }
 
 .tab-btn.active {
-    background: #484848;
+    background: #af0000;
     color: var(--text-primary);
-    border-color: var(--border-light);
+    border-color: #ff0000;
 }
 
 /* Tooltip de tab */
 .tab-btn::after {
     content: attr(title);
-    position: absolute;
-    left: 50%;
-    top: calc(100% + 8px);
-    transform: translateX(-50%);
+    position: fixed;
+    left: auto;
+    top: auto;
+    transform: none;
     background: var(--bg-card);
-    border: 1px solid var(--border);
+    border: 1px solid var(--border-light);
     color: var(--text-primary);
     font-family: 'Poppins', sans-serif;
     font-size: 11px;
     font-weight: 400;
     white-space: nowrap;
-    padding: 4px 8px;
+    padding: 4px 10px;
     border-radius: var(--radius-sm);
     pointer-events: none;
     opacity: 0;
-    transition: opacity 0.15s;
-    z-index: 10;
+    visibility: hidden;
+    transition: opacity 0.15s, visibility 0.15s;
+    transition-delay: 0s;
+    z-index: 99999;
+    margin-left: 50px;
+    margin-top: -20px;
 }
 
 .tab-btn:hover::after {
     opacity: 1;
+    visibility: visible;
+    transition-delay: 0.3s;
 }
 
 /* --- CONTENIDO TABS --- */
@@ -341,6 +355,7 @@ html, body {
     padding: 10px;
     overflow-y: auto;
     flex: 1;
+    align-content: start;
 }
 
 /* Scrollbar */
@@ -359,7 +374,7 @@ html, body {
 }
 
 /* ============================================================
-   TARJETA DE ANIMACIÃ“N
+   TARJETA DE ANIMACIÃƒâ€œN
 ============================================================ */
 .anim-card {
     background: var(--bg-card);
@@ -372,6 +387,8 @@ html, body {
     transition: background 0.14s, border-color 0.14s;
     min-height: 65px;
     max-height: 65px;
+    max-width: 252px;
+    min-width: 252px;
     justify-content: space-between;
 }
 
@@ -418,7 +435,7 @@ html, body {
     border: none;
     cursor: pointer;
     color: var(--accent-dim);
-    font-size: 13px;
+    font-size: 16px;
     padding: 2px 0 0 4px;
     flex-shrink: 0;
     transition: color 0.15s, transform 0.15s;
@@ -436,7 +453,7 @@ html, body {
 }
 
 /* ============================================================
-   VACÃO - FAVORITOS
+   VACÃƒÂO - FAVORITOS
 ============================================================ */
 .empty-msg {
     display: none;
@@ -462,16 +479,15 @@ html, body {
 }
 
 /* ============================================================
-   MODAL ANIMACIÃ“N COMPARTIDA
+   MODAL ANIMACIÃƒâ€œN COMPARTIDA
 ============================================================ */
 #shared-modal {
     position: fixed;
-    inset: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    top: 50%;
+    left: 2vw;
+    transform: translateY(-50%);
     z-index: 99999;
-    pointer-events: all;
+    pointer-events: none;
 }
 
 #shared-modal.hidden {
@@ -483,7 +499,7 @@ html, body {
     border: 1px solid var(--border-light);
     border-radius: var(--radius);
     padding: 24px 28px;
-    width: 300px;
+    width: 280px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -492,104 +508,61 @@ html, body {
     animation: fadeInModal 0.2s ease both;
 }
 
-@keyframes fadeInModal {
-    from { opacity: 0; transform: scale(0.93) translateY(10px); }
-    to   { opacity: 1; transform: scale(1)    translateY(0);    }
-}
-
-.shared-modal-icon {
-    width: 44px;
-    height: 44px;
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 18px;
-    color: var(--text-secondary);
-}
-
-.shared-modal-title {
-    font-family: 'Fugaz One', sans-serif;
-    font-size: 16px;
-    letter-spacing: 0.06em;
-    color: var(--text-primary);
-    text-transform: uppercase;
-}
-
-.shared-modal-desc {
+.shared-modal-keys {
     font-family: 'Poppins', sans-serif;
     font-size: 12px;
-    font-weight: 300;
     color: var(--text-secondary);
-    text-align: center;
-    line-height: 1.5;
-}
-
-.shared-modal-desc strong {
-    color: var(--text-primary);
-    font-weight: 600;
-}
-
-/* Timer bar */
-.shared-modal-timer-bar {
-    width: 100%;
-    height: 3px;
-    background: var(--border);
-    border-radius: 2px;
-    overflow: hidden;
-}
-
-.shared-modal-timer-fill {
-    height: 100%;
-    width: 100%;
-    background: var(--accent-dim);
-    border-radius: 2px;
-    transition: width linear;
-}
-
-/* Botones */
-.shared-modal-actions {
     display: flex;
-    gap: 10px;
-    width: 100%;
+    align-items: center;
+    gap: 8px;
 }
 
-.btn-accept,
-.btn-decline {
+kbd {
+    background: var(--bg-card);
+    border: 1px solid var(--border-light);
+    border-radius: 4px;
+    padding: 2px 8px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.search-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Ajustar el input para que no ocupe todo el ancho */
+#search-input {
     flex: 1;
-    padding: 8px 0;
+}
+
+.btn-walk-mode {
+    background: var(--bg-card);
     border: 1px solid var(--border);
     border-radius: var(--radius-sm);
-    font-family: 'Poppins', sans-serif;
-    font-size: 12px;
-    font-weight: 600;
-    cursor: pointer;
+    color: var(--accent-dim);
+    width: 65px;
+    height: 32px;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 6px;
-    transition: background 0.14s, border-color 0.14s;
+    cursor: pointer;
+    font-size: 14px;
+    flex-shrink: 0;
+    transition: background 0.15s, color 0.15s, border-color 0.15s;
 }
 
-.btn-accept {
-    background: var(--bg-card);
+.btn-walk-mode:hover {
+    background: var(--bg-card-hover);
     color: var(--text-primary);
-}
-
-.btn-accept:hover {
-    background: #2c2c2c;
     border-color: var(--border-light);
 }
 
-.btn-decline {
-    background: transparent;
-    color: var(--text-secondary);
-}
-
-.btn-decline:hover {
-    background: var(--bg-card);
+.btn-walk-mode.active {
+    background: #484848;
     color: var(--text-primary);
     border-color: var(--border-light);
 }

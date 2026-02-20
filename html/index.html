@@ -25,7 +25,9 @@
         <!-- HEADER -->
         <div class="panel-header">
             <div class="header-left">
-                <i class="fa-solid fa-person-running header-icon"></i>
+                <div class="header-icon-box">
+                    <i class="fa-solid fa-person-running"></i>
+                </div>
                 <span class="header-title">ANIMACIONES</span>
             </div>
             <button class="btn-close" id="btn-close-menu">
@@ -37,6 +39,9 @@
         <div class="search-wrapper">
             <i class="fa-solid fa-magnifying-glass search-icon"></i>
             <input type="text" id="search-input" placeholder="Buscar animación..." autocomplete="off"/>
+            <button id="btn-walk-mode" class="btn-walk-mode" title="Modo caminar">
+                <i class="fa-solid fa-person-walking"></i>
+            </button>
         </div>
 
         <!-- BODY: TABS + CONTENIDO -->
@@ -62,7 +67,7 @@
                 <button class="tab-btn" data-tab="compartidas"       title="Compartidas">
                     <i class="fa-solid fa-people-arrows"></i>
                 </button>
-                <button class="tab-btn" data-tab="trabajo"           title="Trabajo">
+                <button class="tab-btn" data-tab="escenarios"           title="Escenarios">
                     <i class="fa-solid fa-briefcase"></i>
                 </button>
                 <button class="tab-btn" data-tab="props"             title="Props">
@@ -78,19 +83,11 @@
 
                 <!-- TODAS -->
                 <div class="tab-panel active" id="tab-todas">
-                    <div class="tab-header">
-                        <i class="fa-solid fa-border-all tab-header-icon"></i>
-                        <span class="tab-header-title">TODAS</span>
-                    </div>
                     <div class="anims-grid" id="grid-todas"></div>
                 </div>
 
                 <!-- FAVORITOS -->
                 <div class="tab-panel" id="tab-favoritos">
-                    <div class="tab-header">
-                        <i class="fa-solid fa-star tab-header-icon"></i>
-                        <span class="tab-header-title">FAVORITOS</span>
-                    </div>
                     <div class="anims-grid" id="grid-favoritos"></div>
                     <div class="empty-msg" id="empty-favoritos">
                         <i class="fa-regular fa-star"></i>
@@ -100,64 +97,36 @@
 
                 <!-- EXPRESIONES -->
                 <div class="tab-panel" id="tab-expresiones">
-                    <div class="tab-header">
-                        <i class="fa-solid fa-face-smile tab-header-icon"></i>
-                        <span class="tab-header-title">EXPRESIONES</span>
-                    </div>
                     <div class="anims-grid" id="grid-expresiones"></div>
                 </div>
 
                 <!-- BAILES -->
                 <div class="tab-panel" id="tab-bailes">
-                    <div class="tab-header">
-                        <i class="fa-solid fa-music tab-header-icon"></i>
-                        <span class="tab-header-title">BAILES</span>
-                    </div>
                     <div class="anims-grid" id="grid-bailes"></div>
                 </div>
 
                 <!-- CAMINAR -->
                 <div class="tab-panel" id="tab-caminar">
-                    <div class="tab-header">
-                        <i class="fa-solid fa-shoe-prints tab-header-icon"></i>
-                        <span class="tab-header-title">FORMAS DE CAMINAR</span>
-                    </div>
                     <div class="anims-grid" id="grid-caminar"></div>
                 </div>
 
                 <!-- COMPARTIDAS -->
                 <div class="tab-panel" id="tab-compartidas">
-                    <div class="tab-header">
-                        <i class="fa-solid fa-people-arrows tab-header-icon"></i>
-                        <span class="tab-header-title">COMPARTIDAS</span>
-                    </div>
                     <div class="anims-grid" id="grid-compartidas"></div>
                 </div>
 
-                <!-- TRABAJO -->
-                <div class="tab-panel" id="tab-trabajo">
-                    <div class="tab-header">
-                        <i class="fa-solid fa-briefcase tab-header-icon"></i>
-                        <span class="tab-header-title">TRABAJO</span>
-                    </div>
-                    <div class="anims-grid" id="grid-trabajo"></div>
+                <!-- escenarios -->
+                <div class="tab-panel" id="tab-escenarios">
+                    <div class="anims-grid" id="grid-escenarios"></div>
                 </div>
 
                 <!-- PROPS -->
                 <div class="tab-panel" id="tab-props">
-                    <div class="tab-header">
-                        <i class="fa-solid fa-box-open tab-header-icon"></i>
-                        <span class="tab-header-title">PROPS</span>
-                    </div>
                     <div class="anims-grid" id="grid-props"></div>
                 </div>
 
                 <!-- SENTARSE -->
                 <div class="tab-panel" id="tab-sentarse">
-                    <div class="tab-header">
-                        <i class="fa-solid fa-chair tab-header-icon"></i>
-                        <span class="tab-header-title">SENTARSE</span>
-                    </div>
                     <div class="anims-grid" id="grid-sentarse"></div>
                 </div>
 
@@ -185,14 +154,9 @@
         <div class="shared-modal-timer-bar">
             <div class="shared-modal-timer-fill" id="shared-timer-fill"></div>
         </div>
-        <div class="shared-modal-actions">
-            <button class="btn-accept" id="btn-accept-shared">
-                <i class="fa-solid fa-check"></i> Aceptar
-            </button>
-            <button class="btn-decline" id="btn-decline-shared">
-                <i class="fa-solid fa-xmark"></i> Rechazar
-            </button>
-        </div>
+        <p class="shared-modal-keys">
+            <kbd>Y</kbd> Aceptar &nbsp;&nbsp; <kbd>N</kbd> Rechazar
+        </p>
     </div>
 </div>
 
